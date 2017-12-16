@@ -22,8 +22,27 @@
     <h2>{{item.name}}</h2>
     <p>{{item.studies}}</p>
     <p>{{item.quatri}}</p>
+    <ion-card>
     <div *ngFor="let student of item.studentId">
-    <button ion-button block color="secondary" round>{{student.name}}</button>
+      <ion-list>
+        <ion-item-sliding>
+          <ion-item>
+            <ion-avatar item-start>
+              <img [src]="'assets/img/stone.gif'">
+            </ion-avatar>
+            <h2>{{student.name}}</h2>
+            <p>{{student.address}}</p>
+          </ion-item>
+
+          <ion-item-options side="right">
+            <button ion-button color="danger" (click)="deleteStudentOfSubject(student, item)">
+              <ion-icon name="alert"></ion-icon>
+              Eliminar
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
     </div>
+    </ion-card>
   </div>
 </ion-content>

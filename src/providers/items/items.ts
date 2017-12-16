@@ -6,6 +6,8 @@ import { Api } from '../api/api';
 @Injectable()
 export class Items {
   items: Item[] = [];
+  students: Item[] = [];
+
   defaultItem: any = {
     "_id": "5a09d0c4f805432b7c87008f",
     "name": "EA",
@@ -33,6 +35,15 @@ export class Items {
     this.items = this.defaultItem;
     this.api.get('subject/api/todos').subscribe((res: any) => { this.items = res });
     return this.api.get('subject/api/todos');
+  }
+  queryStudents() {
+    this.items = this.defaultItem;
+    this.api.get('student/api/todos').subscribe((res: any) => { this.students = res });
+    return this.api.get('student/api/todos');
+  }
+
+  delateStudentFromSubject(subject: any) {
+    return this.api.post('subject/api/deleteStudentSubject/'+subject._id, subject);
   }
 
  /* query(params?: any) {
