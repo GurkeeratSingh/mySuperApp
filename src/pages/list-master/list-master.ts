@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, NavController } from 'ionic-angular';
+import {IonicPage, LoadingController, ModalController, NavController} from 'ionic-angular';
 
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
+import {MainPage} from "../pages";
 
 @IonicPage()
 @Component({
@@ -12,13 +13,25 @@ import { Items } from '../../providers/providers';
 export class ListMasterPage {
   currentItems: Item[];
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController, public loadingCtrl: LoadingController) {
   }
 
   /**
    * The view loaded, let's query our items for the list
    */
   ionViewDidLoad() {
+    this.items.query().subscribe((res: any) => {
+      this.currentItems=res;
+      if (res.status == 'success') {
+
+      } else {
+
+      }
+    }, err => {
+      console.error('ERROR', err);
+    });
+  }
+  getSubjectList() {
     this.items.query().subscribe((res: any) => {
       this.currentItems=res;
       if (res.status == 'success') {
@@ -39,9 +52,18 @@ export class ListMasterPage {
     let addModal = this.modalCtrl.create('ItemCreatePage');
     addModal.onDidDismiss(item => {
       if (item) {
-        this.items.add(item);
+        this.items.add(item).subscribe((res: any) => {
+          console.log(res);
+          if (res.status == 'success') {
+
+          } else {
+
+          }
+        }, err => {
+          console.error('ERROR', err);
+        });;
       }
-    })
+    });
     addModal.present();
   }
 
@@ -56,6 +78,12 @@ export class ListMasterPage {
    * Navigate to the detail page for this item.
    */
   openItem(item: Item) {
+    let loader = this.loadingCtrl.create({
+      dismissOnPageChange: true ,
+      content: "Cargando datos de la asignatura...",
+      duration: 3000
+    });
+    loader.present();
     this.navCtrl.push('ItemDetailPage', {
       item: item
     });

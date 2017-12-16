@@ -12,10 +12,10 @@
   <ion-list>
     <button ion-item (click)="openItem(item)" *ngFor="let item of currentItems">
       <ion-avatar item-start>
-        <img [src]="item.profilePic" />
+        <img [src]="'assets/img/speakers/'+item.quatri+'.jpg'" />
       </ion-avatar>
       <h2>{{item.name}}</h2>
-      <p>{{item.about}}</p>
+      <p>{{item.studies}}</p>
       <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
     </button>
   </ion-list>

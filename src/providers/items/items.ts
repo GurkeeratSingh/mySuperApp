@@ -57,6 +57,7 @@ export class Items {
   }
 
   add(item: Item) {
+    return this.api.post('subject/api/', item);
   }
 
   delete(item: Item) {

@@ -36,11 +36,20 @@
       <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
     </div>
     <ion-list>
-      <ion-item>
+     <!-- <ion-item>
         <ion-input type="text" placeholder="{{ 'ITEM_NAME_PLACEHOLDER' | translate }}" formControlName="name"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="{{ 'ITEM_ABOUT_PLACEHOLDER' | translate }}" formControlName="about"></ion-input>
+        <ion-input type="text" placeholder="{{ 'ITEM_ABOUT_PLACEHOLDER' | translate }}" formControlName="studies"></ion-input>
+      </ion-item>-->
+      <ion-item>
+        <ion-input type="text" placeholder="Nombre de la asignatura" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Carrera" formControlName="studies"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Quatrimestre" formControlName="quatri"></ion-input>
       </ion-item>
     </ion-list>
   </form>

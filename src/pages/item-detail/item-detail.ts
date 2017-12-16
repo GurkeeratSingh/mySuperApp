@@ -14,5 +14,8 @@ export class ItemDetailPage {
   constructor(public navCtrl: NavController, navParams: NavParams, items: Items) {
     this.item = navParams.get('item') || items.defaultItem;
   }
+  removeItem(itemToRem: any){
+    console.log(itemToRem);
+  }
 
 }
