@@ -30,6 +30,7 @@ export class Api {
   }
 
   post(endpoint: string, body: any, reqOpts?: any) {
+    console.log('Direccion: '+this.url+ '/' + endpoint);
     return this.http.post(this.url + '/' + endpoint, body, reqOpts);
   }
 

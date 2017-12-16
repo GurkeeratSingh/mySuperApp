@@ -42,7 +42,8 @@ export class Items {
     return this.api.get('student/api/todos');
   }
 
-  delateStudentFromSubject(subject: any) {
+  delateStudentFromSubject(subject: Item) {
+    this.api.post('subject/api/deleteStudentSubject/'+subject._id, subject).subscribe((res: any)=>{console.log(res)});
     return this.api.post('subject/api/deleteStudentSubject/'+subject._id, subject);
   }
 
