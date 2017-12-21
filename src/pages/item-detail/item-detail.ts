@@ -14,8 +14,29 @@ export class ItemDetailPage {
   constructor(public navCtrl: NavController, navParams: NavParams, public items: Items, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
     this.item = navParams.get('item') || items.defaultItem;
   }
-  removeItem(itemToRem: any){
-    console.log(itemToRem);
+  removeItem(subject: any){
+    console.log(subject);
+    let confirm = this.alertCtrl.create({
+      title: 'Borrar a '+subject.name,
+      message: 'Seguro que quieres borrar '+subject.name,
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Si quiero',
+          handler: () => {
+            console.log('Agree clicked');
+            console.log(subject);
+            this.items.delete(subject);
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
   openStudent(item){
     let loader = this.loadingCtrl.create({

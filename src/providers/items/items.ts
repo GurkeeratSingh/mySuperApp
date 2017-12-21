@@ -73,6 +73,8 @@ export class Items {
   }
 
   delete(item: Item) {
+    this.api.delete('subject/api/'+item._id).subscribe((res: any)=>{console.log(res.message)});
+    return this.api.delete('subject/api/'+item.id);
   }
 
 }

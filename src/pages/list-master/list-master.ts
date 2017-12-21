@@ -61,7 +61,7 @@ export class ListMasterPage {
           }
         }, err => {
           console.error('ERROR', err);
-        });;
+        });
       }
     });
     addModal.present();

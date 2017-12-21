@@ -48,7 +48,7 @@ export class ListStudentPage {
   }
 
   addItem() {
-    let addModal = this.modalCtrl.create('ItemCreatePage');
+    let addModal = this.modalCtrl.create('ItemCreateStudentPage');
     addModal.onDidDismiss(item => {
       if (item) {
         this.items.add(item).subscribe((res: any) => {
@@ -60,7 +60,7 @@ export class ListStudentPage {
           }
         }, err => {
           console.error('ERROR', err);
-        });;
+        });
       }
     });
     addModal.present();
