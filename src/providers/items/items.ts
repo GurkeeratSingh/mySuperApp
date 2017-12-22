@@ -76,5 +76,9 @@ export class Items {
     this.api.delete('subject/api/'+item._id).subscribe((res: any)=>{console.log(res.message)});
     return this.api.delete('subject/api/'+item.id);
   }
+  addStudentToSubjectt(subject: Item){
+    this.api.post('subject/api/'+subject._id, subject).subscribe((res: any)=>{console.log(res.message)});
+    return this.api.post('subject/api/'+subject._id, subject);
+  }
 
 }

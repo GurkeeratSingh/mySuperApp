@@ -29,8 +29,14 @@
     <p>{{item.address}}</p>
     <p>Telef: {{item.phone.home}}</p>
     <p>Movil: {{item.phone.work}}</p>
-    <div>
-      <button ion-button block color="secondary" round>Add Signature</button>
-    </div>
+
+
+      <ion-item>
+        <ion-label>Añadir a la asignatura</ion-label>
+        <ion-select [(ngModel)]="subjectSelected" submitText="Okay" cancelText="Nah" >
+          <ion-option *ngFor="let subj of subjectList" value={{subj._id}}>{{subj.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+    <button ion-button color="primary" (click)="addStudentToSubject()" round>Añadir asignatura</button>
   </div>
 </ion-content>

@@ -12,6 +12,7 @@ import { Items } from '../../providers/providers';
 export class SearchPage {
 
   currentItems: any = [];
+  filtro: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public items: Items) { }
 
@@ -24,9 +25,21 @@ export class SearchPage {
       this.currentItems = [];
       return;
     }
-    this.currentItems = this.items.search({
-      name: val
-    });
+    if (this.filtro == 'name') {
+      this.currentItems = this.items.search({
+        name: val
+      });
+    }
+    if (this.filtro == 'quatri') {
+      this.currentItems = this.items.search({
+        quatri: val
+      });
+    }
+    if (this.filtro == 'studies') {
+      this.currentItems = this.items.search({
+        studies: val
+      });
+    }
   }
 
   /**

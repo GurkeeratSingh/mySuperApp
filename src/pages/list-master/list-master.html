@@ -1,11 +1,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>
+    <ion-title>Subject</ion-title>
 
     <ion-buttons end>
       <button ion-button icon-only (click)="addItem()">
         <ion-icon name="add"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="sort()">
+        <ion-icon name="color-wand"></ion-icon>
       </button>
       <button ion-button icon-only (click)="getSubjectList()">
         <ion-icon name="cloud-download"></ion-icon>
@@ -27,6 +30,7 @@
         <h2>{{item.name}}</h2>
         <h3>{{item.studies}}</h3>
         <p>{{item.quatri}}</p>
+          <p>{{item.studentId.length}}</p>
         <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
         </ion-item>
       </button>
